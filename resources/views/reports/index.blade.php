@@ -27,6 +27,7 @@
             @endauth
         </div>
     </div>
+    
 
     <div style="background: linear-gradient(135deg, #0f172a 0%, #091e3a 50%, #030712 100%); min-height: 90vh; padding: 10px 0 40px 0;" dir="rtl">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -38,7 +39,7 @@
                     <p style="color: #94a3b8; font-size: 15px; margin: 0; text-align: right;">نظام إدارة وتتبع الشكاوى الأكاديمية والخدمية.</p>
                 </div>
                 <a href="{{ route('reports.create') }}" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 18px;">+</span> تقديم بلاغ جديد
+                    <span style="font-size: 18px;">+</span> تقديم بلاغ جديfد
                 </a>
             </div>
 
