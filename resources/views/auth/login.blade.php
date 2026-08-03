@@ -10,8 +10,8 @@
     <div style="background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 40px; border-radius: 20px; width: 100%; max-width: 420px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);">
         
         <div style="text-align: center; margin-bottom: 30px;">
-            
-        <h2 style="color: #ffffff; font-size: 26px; font-weight: 800; margin: 0 0 8px 0;">بلاغات</h2>
+        <h2 style="color: #ffffff; font-size: 26px; font-weight: 800; margin: 0 0 8px 0;">بلاغات</h2>    
+        <h2 style="color: #ffffff; font-size: 26px; font-weight: 800; margin: 0 0 8px 0;">تسجيل الدخول 🔐</h2>
             <p style="color: #94a3b8; font-size: 14px; margin: 0;">أهلاً بك مجدداً، يرجى إدخال بياناتك.</p>
         </div>
 
