@@ -4,9 +4,10 @@
             <div class="flex">
                 <!-- الشعار أو اسم النظام -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('reports.index') }}" style="color: white; font-weight: 800; font-size: 1.2rem; text-decoration: none;">
-                        نظام البلاغات 🛡️
-                    </a>
+                   <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-white font-bold">
+    <span>🛡️</span>
+    <span>نظام البلاغات</span>
+</a>
                 </div>
             </div>
 
