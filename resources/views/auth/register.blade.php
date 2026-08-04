@@ -29,14 +29,12 @@
                 <label style="display: block; font-weight: 600; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; text-align: right;">الاسم الكامل</label>
                 <input type="text" name="name" value="{{ old('name') }}" required autofocus style="width: 100%; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 12px 16px; color: white; font-size: 15px; outline: none; box-sizing: border-box;">
             </div>
-<!-- حقل الرقم الجامعي / الوظيفي بتنسيق HTML صريح مطابق لكلمة المرور -->
-<div class="mt-4">
-    <label for="student_id" class="block font-medium text-sm text-gray-300">الرقم الجامعي / الوظيفي</label>
-    <input id="student_id" class="block mt-1 w-full rounded-md shadow-sm border-gray-600 bg-gray-900/50 text-white focus:border-indigo-500 focus:ring-indigo-500" type="text" name="student_id" value="{{ old('student_id') }}" required autofocus autocomplete="username" />
-    @error('student_id')
-        <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
-    @enderror
-</div>
+
+            <!-- البريد الإلكتروني -->
+            <div style="margin-bottom: 18px;">
+                <label style="display: block; font-weight: 600; font-size: 14px; color: #cbd5e1; margin-bottom: 6px; text-align: right;">البريد الإلكتروني</label>
+                <input type="email" name="email" value="{{ old('email') }}" required style="width: 100%; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 12px 16px; color: white; font-size: 15px; outline: none; box-sizing: border-box;">
+            </div>
 
             <!-- كلمة المرور -->
             <div style="margin-bottom: 18px;">
