@@ -1,50 +1,40 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg border border-gray-100">
-    <h3 class="text-2xl font-semibold text-gray-800 mb-6">تقديم بلاغ جديد</h3>
-
-    <form method="POST" action="{{ route('reports.store') }}" enctype="multipart/form-data">
-        @csrf
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {{-- الصف الأول: اختيار التصنيف والتاريخ (سنضيف التاريخ تلقائياً) --}}
-            <div class="mb-4">
-                <label for="category_id" class="block text-sm font-medium text-gray-700">اختر تصنيف البلاغ</label>
-                <select id="category_id" name="category_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
-                    <option value="">-- اختر نوع المشكلة --</option>
-                    <option value="1">عطل في الشبكة</option>
-                    <option value="2">مشكلة في النظام الأكاديمي</option>
-                    <option value="3">دعم فني عام</option>
-                </select>
+<x-app-layout>
+    <div style="background: linear-gradient(135deg, #0f172a 0%, #091e3a 50%, #030712 100%); min-height: 90vh; padding: 40px 0;" dir="rtl">
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+            
+            <!-- ترويسة الصفحة -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 25px 30px; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);">
+                <div>
+                    <h2 style="font-size: 24px; font-weight: 800; color: #ffffff; margin: 0 0 5px 0;">تقديم بلاغ جديد 📝</h2>
+                    <p style="color: #94a3b8; font-size: 14px; margin: 0;">املئي الحقول أدناه بالتفاصيل لمعالجة مشكلتك في أسرع وقت.</p>
+                </div>
+                <a href="{{ route('reports.index') }}" style="background: rgba(255, 255, 255, 0.1); color: #cbd5e1; padding: 10px 18px; border-radius: 10px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255, 255, 255, 0.15); transition: all 0.2s;">
+                    ← العودة للقائمة
+                </a>
             </div>
 
-             <div class="mb-4">
-                 <label for="title" class="block text-sm font-medium text-gray-700">عنوان البلاغ</label>
-                 <input id="title" name="title" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="text" required>
-             </div>
-        </div>
+            <!-- نموذج الإدخال -->
+            <div style="background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 30px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);">
+                <form action="{{ route('reports.store') }}" method="POST">
+                    @csrf
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: 600; font-size: 14px; color: #cbd5e1; margin-bottom: 8px;">عنوان البلاغ</label>
+                        <input type="text" name="title" required placeholder="مثلاً: مشكلة في شبكة الإنترنت بقاعة 5" style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 12px 16px; color: white; font-size: 15px; outline: none;">
+                    </div>
 
-        {{-- حقل التفاصيل (مستطيل كبير) --}}
-        <div class="mb-6">
-            <label for="description" class="block text-sm font-medium text-gray-700">تفاصيل المشكلة</label>
-            <textarea id="description" name="description" rows="6" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required></textarea>
-        </div>
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; font-weight: 600; font-size: 14px; color: #cbd5e1; margin-bottom: 8px;">الوصف التفصيلي</label>
+                        <textarea name="description" rows="5" required placeholder="اكتبي تفاصيل المشكلة بوضوح..." style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 12px 16px; color: white; font-size: 15px; outline: none; resize: vertical;"></textarea>
+                    </div>
 
-        {{-- رفع الملفات والزر --}}
-        <div class="flex items-center justify-between border-t border-gray-200 pt-6">
-             <div class="flex items-center">
-                <label for="file" class="cursor-pointer flex items-center text-indigo-600 hover:text-indigo-500">
-                    <svg class="w-6 h-6 ms-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.414 6.586a6 6 0 108.486 8.486L21 13"></path></svg>
-                    <span>إرفاق ملف (صورة أو مستند)</span>
-                    <input id="file" name="file" type="file" class="sr-only">
-                </label>
-             </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 12px;">
+                        <a href="{{ route('reports.index') }}" style="background: transparent; color: #94a3b8; padding: 12px 20px; border-radius: 10px; text-decoration: none; font-weight: bold;">إلغاء</a>
+                        <button type="submit" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 12px 24px; border-radius: 10px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);">إرسال البلاغ الآن</button>
+                    </div>
+                </form>
+            </div>
 
-            <button type="submit" class="inline-flex items-center px-6 py-3 bg-indigo-600 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-indigo-700 transition">
-                إرسال البلاغ
-            </button>
         </div>
-    </form>
-</div>
-@endsection
+    </div>
+</x-app-layout>
