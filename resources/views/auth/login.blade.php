@@ -1,53 +1,55 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>تسجيل الدخول - نظام البلاغات</title>
-</head>
-<body style="margin: 0; padding: 0; background: linear-gradient(135deg, #0f172a 0%, #091e3a 50%, #030712 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: Tahoma, sans-serif;">
+@extends('layouts.guest')
 
-    <div style="background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 40px; border-radius: 20px; width: 100%; max-width: 420px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);">
-        
-        <div style="text-align: center; margin-bottom: 30px;">
-        <h2 style="color: #ffffff; font-size: 26px; font-weight: 800; margin: 0 0 8px 0;">بلاغات</h2>    
-        <h2 style="color: #ffffff; font-size: 26px; font-weight: 800; margin: 0 0 8px 0;">تسجيل الدخول 🔐</h2>
-            <p style="color: #94a3b8; font-size: 14px; margin: 0;">أهلاً بك مجدداً، يرجى إدخال بياناتك.</p>
-        </div>
+@section('content')
+<div class="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-50">
+    
+    {{-- قسم الترحيب (الذي رسمتِه) --}}
+    <div class="md:w-1/2 p-8 text-center md:text-right">
+        <x-application-logo class="h-20 w-20 mx-auto md:mx-0 mb-6" /> {{-- شعار الدائرة واليد --}}
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">مرحباً بك</h1>
+        <p class="text-xl text-gray-600">النظام الأكاديمي / الدعم الوظيفي</p>
+    </div>
 
-        <!-- رسائل الخطأ إن وجدت -->
-        @if ($errors->any())
-            <div style="background: rgba(239, 68, 68, 0.15); border-right: 4px solid #ef4444; color: #fca5a5; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; font-size: 13px;">
-                البريد الإلكتروني أو كلمة المرور غير صحيحة.
-            </div>
-        @endif
+    {{-- نموذج تسجيل الدخول --}}
+    <div class="md:w-1/2 max-w-md w-full p-8 bg-white rounded-lg shadow-md border border-gray-100">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6">تسجيل الدخول</h2>
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- البريد الإلكتروني -->
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; font-weight: 600; font-size: 14px; color: #cbd5e1; margin-bottom: 8px; text-align: right;">البريد الإلكتروني</label>
-                <input type="email" name="email" value="{{ old('email') }}" required autofocus style="width: 100%; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 12px 16px; color: white; font-size: 15px; outline: none; box-sizing: border-box;">
+            <div class="mb-4">
+                <label for="employee_id" class="block text-sm font-medium text-gray-700">الرقم الوظيفي / الرقم الجامعي</label>
+                <input id="employee_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="text" name="employee_id" required autofocus>
             </div>
 
-            <!-- كلمة المرور -->
-            <div style="margin-bottom: 25px;">
-                <label style="display: block; font-weight: 600; font-size: 14px; color: #cbd5e1; margin-bottom: 8px; text-align: right;">كلمة المرور</label>
-                <input type="password" name="password" required style="width: 100%; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 12px 16px; color: white; font-size: 15px; outline: none; box-sizing: border-box;">
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">كلمة المرور</label>
+                <input id="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="password" name="password" required>
             </div>
 
-            <!-- زر الدخول -->
-            <button type="submit" style="width: 100%; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 14px; border-radius: 10px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); font-size: 16px; transition: 0.3s;">
-                دخول إلى النظام
+            <div class="flex items-center justify-between mb-6">
+                <label for="remember_me" class="flex items-center">
+                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                    <span class="ms-2 text-sm text-gray-600">تذكرني</span>
+                </label>
+
+                @if (Route::has('password.request'))
+                    <a class="text-sm text-indigo-600 hover:text-indigo-500" href="{{ route('password.request') }}">
+                        هل نسيت كلمة المرور؟
+                    </a>
+                @endif
+            </div>
+
+            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                تسجيل الدخول
             </button>
+
+             <div class="mt-6 text-center">
+                <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-500">
+                    ليس لديك حساب؟ قم بإنشاء حساب جديد!
+                </a>
+            </div>
         </form>
-
-        <div style="margin-top: 25px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
-            <a href="{{ route('register') }}" style="color: #60a5fa; font-size: 14px; text-decoration: none; font-weight: 600;">ليس لديك حساب؟ سجل حساباً جديداً</a>
-        </div>
-
     </div>
-
-</body>
-</html>
+</div>
+@endsection
