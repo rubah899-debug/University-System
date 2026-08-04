@@ -12,7 +12,24 @@
                     ← العودة للقائمة
                 </a>
             </div>
+<!-- 1. اختيار التصنيف -->
+                <div class="mb-4">
+                    <label for="category" class="block font-medium text-sm text-gray-700">اختيار التصنيف</label>
+                    <select id="category" name="category" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                        <option value="">اختر التصنيف المناسب</option>
+                        <option value="academic">أكاديمي</option>
+                        <option value="administrative">إداري</option>
+                        <option value="technical">تقني / شبكات</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
 
+                <!-- 4. إرفاق ملف -->
+                <div class="mb-4">
+                    <label for="attachment" class="block font-medium text-sm text-gray-700">إرفاق ملف (اختياري)</label>
+                    <input id="attachment" type="file" name="attachment" class="block mt-1 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" />
+                </div>
+                
             <!-- نموذج الإدخال -->
             <div style="background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 30px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);">
                 <form action="{{ route('reports.store') }}" method="POST">
