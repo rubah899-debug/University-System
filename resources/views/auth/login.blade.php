@@ -25,13 +25,11 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-          <!-- حقل الرقم الجامعي / الوظيفي بالتنسيق المتناسق -->
-<div class="mb-4">
-    <label for="student_id" class="block font-medium text-sm text-gray-200 mb-1">الرقم الجامعي / الوظيفي</label>
-    <input id="student_id" class="block mt-1 w-full bg-slate-800/50 border border-slate-600 focus:border-blue-400 focus:ring-blue-400 text-white rounded-md shadow-sm px-4 py-2" type="text" name="student_id" value="{{ old('student_id') }}" required autofocus autocomplete="username" />
-    @error('student_id')
-        <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
-    @enderror
+          <!-- حقل الرقم الجامعي / الوظيفي مطابق لبقية الحقول -->
+<div class="mt-4">
+    <x-input-label for="student_id" :value="__('الرقم الجامعي / الوظيفي')" class="text-white" />
+    <x-text-input id="student_id" class="block mt-1 w-full bg-slate-800/60 border-slate-600 text-white focus:border-indigo-500 focus:ring-indigo-500" type="text" name="student_id" :value="old('student_id')" required autofocus autocomplete="username" />
+    <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
 </div>
 
             <!-- كلمة المرور -->
