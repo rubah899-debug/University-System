@@ -2,17 +2,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-
-            <a href="https://university-system-production-f615.up.railway.app/reports" style="color: blue; font-size: 20px; font-weight: bold; text-decoration: underline;">
-    اضغط هنا الانتقال لصفحة البلاغات
-</a>
                 <!-- الشعار أو اسم النظام -->
- <div class="shrink-0 flex items-center" style="position: relative; z-index: 9999;">
-    <a href="/reports" style="display: flex; align-items: center; gap: 8px; color: white; font-weight: bold; text-decoration: none; cursor: pointer;">
-        <span style="font-size: 1.2rem;">🛡️</span>
-        <span>نظام البلاغات</span>
-    </a>
-</div>
+                <div class="shrink-0 flex items-center">
+                   <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-white font-bold">
+    <span>🛡️</span>
+    <span>نظام البلاغات</span>
+</a>
+                </div>
             </div>
 
             <!-- الأزرار العلوية -->
