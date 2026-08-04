@@ -3,12 +3,12 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- الشعار أو اسم النظام -->
-                <div class="shrink-0 flex items-center">
-                   <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-white font-bold">
-    <span>🛡️</span>
-    <span>نظام البلاغات</span>
-</a>
-                </div>
+   <div class="shrink-0 flex items-center relative z-50">
+    <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-white font-bold text-lg hover:text-indigo-300 transition cursor-pointer pointer-events-auto">
+        <span>🛡️</span>
+        <span>نظام البلاغات</span>
+    </a>
+</div>
             </div>
 
             <!-- الأزرار العلوية -->
